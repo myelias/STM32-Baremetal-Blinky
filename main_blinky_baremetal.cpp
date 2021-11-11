@@ -20,7 +20,7 @@ int main()
     RCC->CR |= (1<<16);         //Enable High Speed External (HSE) Clock Signal
     while(!(RCC->CR)&(1<<17));  //the 17th bit in the RCC_CR indicates if the HSE is ready, so we wait in a while loop until it is true.
     RCC->CFGR &= 0x00000000;    //Reset Clock Configuration Register
-    RCC->CFGR |= 0xA0;          //Now, we are setting the AHB1 prescaler. We set it to 1010 0000 to divide the system clock by 8.
+    RCC->CFGR |= 0xA0;          //Now, we are setting the AHB1 prescaler. We set it to 1010 0000 to divide the system clock by 8 in HPRE register.
     RCC->AHB1ENR &= 0x00000000; //GPIOA is connected to the AHB1 bus. So we must reset the bus then enable the clock to the GPIOA register.
     RCC->AHB1ENR |= (1<<0);     //Enable GPIOA within the RCC_AHB1ENR1 Register
 
